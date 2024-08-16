@@ -1,8 +1,5 @@
-import java.util.EmptyStackException;
-
 public class stack<T> {
     private Node<T> pilha;
-    private int tamanho;
 
     private static class Node<T> {
         private T data;
@@ -15,29 +12,25 @@ public class stack<T> {
 
     public stack() {
         pilha = null;
-        tamanho = 0;
     }
 
     public void push(T valor) {
         Node<T> newNode = new Node<>(valor);
         newNode.next = pilha;
-        tamanho++;
     }
 
  
     public T pop() {
         if (isEmpty()) {
-            throw new EmptyStackException();
-    }
+            return null;
+        }
         T data = pilha.data;
         pilha = pilha.next;
-        tamanho--;
         return data;
     }
 
     public void clear() {
         pilha = null;  
-        tamanho = 0; 
     }
 
 
